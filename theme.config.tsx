@@ -14,7 +14,7 @@ const config: DocsThemeConfig = {
     alt='Alote'
     width={50}
     height={50}
-    src="../public/telegram.png"
+    src="/telegram.png"
     />,
     link: 'https://t.me/cardanomarlowevietnam',
   },
