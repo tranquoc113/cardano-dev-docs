@@ -1,7 +1,8 @@
 import React from 'react'
 import { DocsThemeConfig } from 'nextra-theme-docs'
 import Image from 'next/image'
-// import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { useConfig } from 'nextra-theme-docs'
 
 const config: DocsThemeConfig = {
   logo: <span style={{display: 'contents'}}><Image src="/logo.jpg" width={30} height={10} alt='logo'/> <span>Cardano Marlowe</span></span>,
@@ -23,6 +24,32 @@ const config: DocsThemeConfig = {
     text: 'Marlowe Docs Việt Nam',
   },
   gitTimestamp: <span>Date: {new Date().getDay() + ' - '+ new Date().getMonth() +' - ' +new Date().getUTCFullYear()}</span>,
+  head: () => {
+    const { asPath, defaultLocale, locale } = useRouter()
+    const { frontMatter } = useConfig()
+    const url =
+      'https://marlowe.phouse.com.vn' +
+      (defaultLocale === locale ? asPath : `/${locale}${asPath}`)
+ 
+    return (
+      <>
+        <meta property="og:url" content={url} />
+        <meta property="og:title" content={frontMatter.title || 'Update Group'} />
+        <meta
+          property="og:description"
+          content={frontMatter.description || 'Cardano Marlowe'}
+        />
+      </>
+    )
+  },
+  useNextSeoProps() {
+    const { asPath } = useRouter()
+    if (asPath !== '/') {
+      return {
+        titleTemplate: '%s – Update Group'
+      }
+    }
+  }
 }
 
 export default config
