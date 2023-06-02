@@ -5,17 +5,17 @@ import { useRouter } from 'next/router'
 import { useConfig } from 'nextra-theme-docs'
 
 const config: DocsThemeConfig = {
-  logo: <span style={{display: 'contents'}}><Image src="/logo.jpg" width={30} height={10} alt='logo'/> <span>Cardano Marlowe</span></span>,
+  logo: <span style={{ display: 'contents' }}><Image src="/marlowe.svg" width={30} height={10} alt='logo' /> <span style={{ marginLeft: "10px" }}>Cardano Marlowe</span></span>,
   logoLink: "/",
   project: {
     link: 'https://github.com/input-output-hk/marlowe/tree/master/papers',
   },
   chat: {
-    icon: <Image 
-    alt='Alote'
-    width={50}
-    height={50}
-    src="/telegram.png"
+    icon: <Image
+      alt='Alote'
+      width={27}
+      height={0}
+      src="/telegram.svg"
     />,
     link: 'https://t.me/cardanomarlowevietnam',
   },
@@ -23,16 +23,17 @@ const config: DocsThemeConfig = {
   footer: {
     text: 'Marlowe Docs Việt Nam',
   },
-  gitTimestamp: <span>Date: {new Date().getDay() + ' - '+ new Date().getMonth() +' - ' +new Date().getUTCFullYear()}</span>,
+  gitTimestamp: <span>Date: {new Date().getDay() + ' - ' + new Date().getMonth() + ' - ' + new Date().getUTCFullYear()}</span>,
   head: () => {
     const { asPath, defaultLocale, locale } = useRouter()
     const { frontMatter } = useConfig()
     const url =
       'https://marlowe.phouse.com.vn' +
       (defaultLocale === locale ? asPath : `/${locale}${asPath}`)
- 
+
     return (
       <>
+        <link data-rh="true" rel="icon" href="/favicon.ico"></link>
         <meta property="og:url" content={url} />
         <meta property="og:title" content={frontMatter.title || 'Update Group'} />
         <meta
