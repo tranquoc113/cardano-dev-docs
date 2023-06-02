@@ -22,7 +22,7 @@ const config: DocsThemeConfig = {
   footer: {
     text: 'Marlowe Docs Việt Nam',
   },
-  gitTimestamp: <span>Date: {new Date().getDay() + ' - '+ new Date().getMonth() +' - ' +new Date().getUTCFullYear()}</span>
+  gitTimestamp: <span>Date: {new Date().getDay() + ' - '+ new Date().getMonth() +' - ' +new Date().getUTCFullYear()}</span>,
 }
 
 export default config
